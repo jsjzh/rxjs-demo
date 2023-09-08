@@ -1,6 +1,6 @@
 import { html, render } from "lit-html";
 import { combineLatest, fromEvent, map } from "rxjs";
-import { inputTemplate } from "../shared/template";
+import { inputTemplate } from "../../shared/template";
 
 const $document = document;
 const $app = document.getElementById("app") as HTMLDivElement;

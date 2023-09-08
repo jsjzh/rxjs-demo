@@ -1,4 +1,8 @@
 {
+  "name": "rxjs-tiny-code",
+  "version": "0.0.1",
+  "description": "rxjs-tiny-code",
+  "author": "jsjzh <kimimi_king@163.com>",
   "scripts": {
     "start": "parcel serve index.html --no-cache --open"
   },

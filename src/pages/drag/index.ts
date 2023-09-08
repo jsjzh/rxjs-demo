@@ -1,6 +1,6 @@
 import { html, render } from "lit-html";
 import { fromEvent, map, switchAll, switchMap, takeUntil, tap } from "rxjs";
-import { dragTemplate } from "../shared/template";
+import { dragTemplate } from "../../shared/template";
 
 const $document = document;
 const $app = document.getElementById("app") as HTMLDivElement;

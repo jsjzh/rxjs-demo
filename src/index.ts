@@ -1,2 +1,2 @@
-import "./drag";
-// import "./bmi";
+import "./pages/drag";
+// import "./pages/bmi";
