@@ -11,13 +11,16 @@ const template = html`
 
 render(template, $app);
 
+let ZIndex = 1;
+const getNextZIndex = () => String(++ZIndex);
+
 const $red = document.getElementById("red")!;
 const $blue = document.getElementById("blue")!;
 
 fromEvent<MouseEvent>($red, "mousedown")
   .pipe(
     switchMap((e) => {
-      $red.style.zIndex = "999";
+      $red.style.zIndex = getNextZIndex();
 
       const baseX = e.clientX;
       const baseY = e.clientY;
@@ -32,13 +35,7 @@ fromEvent<MouseEvent>($red, "mousedown")
       const offsetY = baseY - preY;
 
       return fromEvent<MouseEvent>($document, "mousemove").pipe(
-        takeUntil(
-          fromEvent($document, "mouseup").pipe(
-            map(() => {
-              $red.style.zIndex = "1";
-            }),
-          ),
-        ),
+        takeUntil(fromEvent($document, "mouseup")),
         map((e) => ({ X: e.pageX - offsetX, Y: e.pageY - offsetY })),
       );
     }),
@@ -54,7 +51,8 @@ const mouseMove = fromEvent<MouseEvent>($document, "mousemove");
 mouseDown
   .pipe(
     map((event) => {
-      $blue.style.zIndex = "999";
+      $blue.style.zIndex = getNextZIndex();
+
       const baseX = event.clientX;
       const baseY = event.clientY;
 
@@ -68,19 +66,12 @@ mouseDown
       const offsetY = baseY - preY;
 
       return mouseMove.pipe(
-        takeUntil(
-          mouseUp.pipe(
-            map(() => {
-              $blue.style.zIndex = "1";
-            }),
-          ),
-        ),
+        takeUntil(mouseUp),
         map((e) => ({ X: e.pageX - offsetX, Y: e.pageY - offsetY })),
       );
     }),
     switchAll(),
   )
   .subscribe((pos) => {
-    $blue.style.zIndex = "1";
     $blue.style.transform = `translate3d(${pos.X}px, ${pos.Y}px, 0px)`;
   });
