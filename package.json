@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "start": "parcel serve index.html --no-cache"
+  },
+  "dependencies": {
+    "lit-html": "^2.8.0",
+    "rxjs": "^7.8.1"
+  }
+}
