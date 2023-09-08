@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "parcel serve index.html --no-cache"
+    "start": "parcel serve index.html --no-cache --open"
   },
   "dependencies": {
     "lit-html": "^2.8.0",
