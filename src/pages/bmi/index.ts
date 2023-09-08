@@ -1,14 +1,14 @@
 import { html, render } from "lit-html";
 import { combineLatest, fromEvent, map } from "rxjs";
-import { inputTemplate } from "../../shared/template";
+import { inputNumberTemplate } from "../../shared/template";
 
 const $document = document;
 const $app = document.getElementById("app") as HTMLDivElement;
 
 const template = html`
-  <div>${inputTemplate("weight", "体重")}</div>
-  <div>${inputTemplate("height", "身高")}</div>
-  <div>${inputTemplate("BMI", "指数")}</div>
+  <div>${inputNumberTemplate("weight", "体重")}</div>
+  <div>${inputNumberTemplate("height", "身高")}</div>
+  <div>${inputNumberTemplate("BMI", "指数")}</div>
 `;
 
 render(template, $app);

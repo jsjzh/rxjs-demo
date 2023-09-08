@@ -1,9 +1,18 @@
 import { html } from "lit-html";
 
-export const inputTemplate = (id: string, title: string) => html`
+export const inputNumberTemplate = (id: string, title: string) => html`
   <label for=${id}>${title}</label>
   <input
     type="number"
+    name=${id}
+    id=${id}
+  />
+`;
+
+export const inputCheckboxTemplate = (id: string, title: string) => html`
+  <label for=${id}>${title}</label>
+  <input
+    type="checkbox"
     name=${id}
     id=${id}
   />
